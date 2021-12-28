@@ -1,0 +1,25 @@
+.market_subscribe {
+  display: flex;
+  justify-content: center;
+  height: 25px;
+  margin-top: 25px;
+  .market_input {
+    width: 250px;
+    height: 25px;
+    border: 1px solid #3d7fd9;
+    background-color: #f1f4f9;
+  }
+  .market_btn-subscribe {
+    width: 150px;
+    height: 30px;
+    margin-left: 50px;
+    background-color: #195fb4;
+    color: #fff;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+  }
+  .market_btn-subscribe:hover {
+    background-color: #3d7fd9;
+  }
+}
