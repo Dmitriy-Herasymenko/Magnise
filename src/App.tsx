@@ -1,4 +1,4 @@
-import {Market} from "./сomponents/market";
+import {Market} from "./сomponents";
 
 export const App = () => {
   return (
