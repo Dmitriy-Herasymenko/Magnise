@@ -1,4 +1,4 @@
-import { LineChart, Line, CartesianGrid, XAxis, YAxis, Tooltip } from 'recharts';
+import {LineChart, Line, CartesianGrid, XAxis, YAxis, Tooltip, Legend} from 'recharts';
 import {IHistory} from "../../Types/";
 import {FC} from "react";
 import './style.scss';
@@ -12,17 +12,19 @@ export  const ChartingData: FC<IPops> = ({history}) => {
         const date = new Date(item.time_close).toLocaleDateString()
         return {
             name: date,
-            uv: item.price_close
+            price: item.volume_traded
         }
-    })
+    }).slice(3,20)
 
     return (
         <div className='market-charting'>
             <LineChart width={1000} height={300} data={dataNew}>
                 <XAxis dataKey="name"/>
                 <YAxis/>
+                <Tooltip />
+                <Legend />
                 <CartesianGrid stroke="#eee" strokeDasharray="5 5"/>
-                <Line type="monotone" dataKey="uv" stroke="#8884d8" />
+                <Line type="monotone" dataKey="price" stroke="#8884d8" />
             </LineChart>
         </div>
     )
