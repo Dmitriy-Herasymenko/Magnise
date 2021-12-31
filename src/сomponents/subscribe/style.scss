@@ -9,10 +9,20 @@
     border: 1px solid #3d7fd9;
     background-color: #f1f4f9;
   }
+  .select{
+    width:250px;
+    height: 35px;
+    padding: 10px;
+    background-color: #f1f4f9;
+    border-radius: 5px;
+  }
+  .select-symbol {
+    margin-left: 25px;
+  }
   .market_btn-subscribe {
     width: 150px;
-    height: 30px;
-    margin-left: 50px;
+    height: 35px;
+    margin-left: 25px;
     background-color: #195fb4;
     color: #fff;
     border: none;

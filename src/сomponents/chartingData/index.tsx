@@ -4,7 +4,7 @@ import {FC} from "react";
 import './style.scss';
 
 interface IPops {
-    history: any
+    history: IHistory[]
 }
 
 export  const ChartingData: FC<IPops> = ({history}) => {
@@ -14,7 +14,7 @@ export  const ChartingData: FC<IPops> = ({history}) => {
             name: date,
             price: item.volume_traded
         }
-    }).slice(3,20)
+    })
 
     return (
         <div className='market-charting'>

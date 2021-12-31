@@ -7,7 +7,7 @@ interface IProps {
 }
 
 export const MarketData: FC<IProps> = ({data}) => {
-        const date = new Date(data.time_exchange).toLocaleDateString()
+            if(Object.keys(data).length === 0) return <div className='market-data'><h3 className='subscribe'>No Subscribe</h3></div>
                 return (
                     <div className='market-data'>
                         <div>
@@ -20,7 +20,7 @@ export const MarketData: FC<IProps> = ({data}) => {
                          </span>
                         <span>
                             <h3>Time Exchange</h3>
-                            <p>{date}</p>
+                            <p>{new Date(data.time_exchange).toLocaleDateString()}</p>
                         </span>
                     </div>
                 )

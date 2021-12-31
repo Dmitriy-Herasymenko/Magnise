@@ -1,28 +1,28 @@
 import React, {FC} from "react";
-import {IExchange} from '../../Types/';
+import {IExchange, ISymbol} from '../../Types/';
 import './style.scss';
 
 interface IProps {
     selectData: IExchange[];
-    selectSymbols: any;
+    selectSymbols: ISymbol[];
     handleSubmit: () => void;
     handleChangeExchange: (e: React.SyntheticEvent) => void
-    handleChangeSymbol: any
+    handleChangeSymbol: (e: React.SyntheticEvent) => void
 }
 
 export const Subscribe: FC<IProps> = ({selectData, selectSymbols,  handleSubmit, handleChangeExchange, handleChangeSymbol}) => {
     return (
         <div className='market_subscribe' >
-            <select name='select' onChange={handleChangeExchange}>{
-                selectData && selectData.map((item) => <option
+            <select name='select' className='select' onChange={handleChangeExchange}>{
+                selectData && selectData.map(item => <option
                 key={item.exchange_id}
                 value={item.exchange_id}>
                 {item.exchange_id}
             </option>)
             }
             </select>
-            <select name='select' onChange={handleChangeSymbol}>{
-                selectSymbols && selectSymbols.map((item:any) => <option
+            <select name='select' className='select select-symbol' onChange={handleChangeSymbol}>{
+                selectSymbols && selectSymbols.map(item => <option
                     key={item.symbol_id}
                     value={item.symbol_id}>
                     {item.symbol_id}

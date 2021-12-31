@@ -1,57 +1,65 @@
 import React, {useEffect, useState} from 'react';
 import { MarketData, ChartingData, Subscribe } from '../index';
-import {IExchange, IHistory, IMarketData} from '../../Types';
+import {IExchange, IHistory, IMarketData, ISymbol} from '../../Types';
 import {config} from "../../utils/config";
-import axios from 'axios';
+import axios, {AxiosError} from 'axios';
 import './style.scss'
 
 export const Market = () => {
     const [selectExchange, setSelectExchange] = useState<IExchange[]>([]);
-    const [selectSymbols, setSelectSymbols] = useState<any>([]);
+    const [selectSymbols, setSelectSymbols] = useState<ISymbol[]>([]);
     const [data, setData] = useState<IMarketData>({} as IMarketData)
-    const [symbolId, setSymbolId] = useState<any>('')
+    const [symbolId, setSymbolId] = useState<string>('')
     const [history, setHistory] = useState<IHistory[]>([])
 
     const handleChangeExchange = (e: any) => {
         const getExchangeId = e.target.value
         getSymbols(getExchangeId)
     };
-
     const handleChangeSymbol = (e: any) => {
         const getSymbolId = e.target.value
         getDataHistory(getSymbolId)
         setSymbolId(getSymbolId)
     };
-
     const handleSubmit = () => {
         exchangeRate()
     };
 
-    const getExchanges = () => {
-        axios.get<IExchange[]>('https://rest.coinapi.io/v1/exchanges', {
-            headers: {
-                'X-CoinAPI-Key': config.api
-            }
-        })
-            .then(resp => setSelectExchange(resp.data))
-            .catch(error => console.log(error))
+    const getExchanges = async () => {
+        try {
+            const {data} = await axios.get<IExchange[]>(`https://rest.coinapi.io/v1/exchanges`, {
+                headers: {
+                    'X-CoinAPI-Key': config.api
+                }})
+               setSelectExchange(data)
+        } catch (e) {
+            const err = e as AxiosError
+            console.log(err.response?.data)
+        }
     };
-
-    const getSymbols = (exchangeId:string) => {
-       axios.get(`https://rest.coinapi.io/v1/symbols/${exchangeId}`, {
-            headers: {
-                'X-CoinAPI-Key': config.api
-            }})
-            .then(resp => setSelectSymbols(resp.data))
-            .catch(error => console.log(error))
+    const getSymbols = async (exchangeId:string) => {
+        try {
+            const {data} = await axios.get<ISymbol[]>(`https://rest.coinapi.io/v1/symbols/${exchangeId}`, {
+                headers: {
+                    'X-CoinAPI-Key': config.api
+                }})
+            setSelectSymbols(data)
+        } catch (e) {
+            const err = e as AxiosError
+            console.log(err.response?.data)
+        }
     };
-    const getDataHistory = (symbolId:string) => {
-        axios.get<IHistory[]>(`https://rest.coinapi.io/v1/ohlcv/${symbolId}/latest?period_id=5SEC`, {
-            headers: {
-                'X-CoinAPI-Key': config.api
-            }})
-            .then(resp => setHistory(resp.data))
-            .catch(error => console.log(error))
+    const getDataHistory = async (symbolId:string) => {
+        try {
+            const {data} = await axios.get<IHistory[]>(`https://rest.coinapi.io/v1/ohlcv/${symbolId}/latest?period_id=5SEC`, {
+                headers: {
+                    'X-CoinAPI-Key': config.api
+                }})
+            setHistory(data)
+        } catch (e) {
+            const err = e as AxiosError
+            console.log(err.response?.data)
+        }
     };
     const exchangeRate = () => {
         const ws = new WebSocket("wss://ws-sandbox.coinapi.io/v1/");
@@ -77,7 +85,6 @@ export const Market = () => {
     useEffect(() => {
         getExchanges()
     }, [])
-
 
     return (
         <div className='market'>

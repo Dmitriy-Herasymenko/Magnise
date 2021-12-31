@@ -1,4 +1,4 @@
 export interface IHistory{
-    name: string;
+    time_close: string;
     volume_traded: string;
 }
