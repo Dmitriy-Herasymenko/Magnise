@@ -26,11 +26,11 @@ export const Market = () => {
     };
 
     const getExchanges = async () => {
+        const setting = {headers: {
+                'X-CoinAPI-Key': config.api
+            }};
         try {
-            const {data} = await axios.get<IExchange[]>(`https://rest.coinapi.io/v1/exchanges`, {
-                headers: {
-                    'X-CoinAPI-Key': config.api
-                }})
+            const {data} = await axios.get<IExchange[]>(`https://rest.coinapi.io/v1/exchanges`, setting)
                setSelectExchange(data)
         } catch (e) {
             const err = e as AxiosError
@@ -38,11 +38,11 @@ export const Market = () => {
         }
     };
     const getSymbols = async (exchangeId:string) => {
+        const setting = {headers: {
+                'X-CoinAPI-Key': config.api
+            }};
         try {
-            const {data} = await axios.get<ISymbol[]>(`https://rest.coinapi.io/v1/symbols/${exchangeId}`, {
-                headers: {
-                    'X-CoinAPI-Key': config.api
-                }})
+            const {data} = await axios.get<ISymbol[]>(`https://rest.coinapi.io/v1/symbols/${exchangeId}`, setting)
             setSelectSymbols(data)
         } catch (e) {
             const err = e as AxiosError
@@ -50,11 +50,11 @@ export const Market = () => {
         }
     };
     const getDataHistory = async (symbolId:string) => {
+        const setting = {headers: {
+                'X-CoinAPI-Key': config.api
+            }};
         try {
-            const {data} = await axios.get<IHistory[]>(`https://rest.coinapi.io/v1/ohlcv/${symbolId}/latest?period_id=5SEC`, {
-                headers: {
-                    'X-CoinAPI-Key': config.api
-                }})
+            const {data} = await axios.get<IHistory[]>(`https://rest.coinapi.io/v1/ohlcv/${symbolId}/latest?period_id=5SEC`, setting)
             setHistory(data)
         } catch (e) {
             const err = e as AxiosError
