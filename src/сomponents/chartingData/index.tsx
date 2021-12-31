@@ -24,7 +24,7 @@ export  const ChartingData: FC<IPops> = ({history}) => {
                 <Tooltip />
                 <Legend />
                 <CartesianGrid stroke="#eee" strokeDasharray="5 5"/>
-                <Line type="monotone" dataKey="price" stroke="#8884d8" />
+                <Line type="monotone" dataKey="price" stroke="#195fb4" />
             </LineChart>
         </div>
     )
