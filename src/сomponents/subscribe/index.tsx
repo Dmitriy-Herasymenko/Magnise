@@ -1,4 +1,4 @@
-import React, {FC} from "react";
+import React, {ChangeEvent, FC} from 'react';
 import {IExchange, ISymbol} from '../../Types/';
 import './style.scss';
 
@@ -6,8 +6,8 @@ interface IProps {
     selectData: IExchange[];
     selectSymbols: ISymbol[];
     handleSubmit: () => void;
-    handleChangeExchange: (e:any) => void
-    handleChangeSymbol: (e:any) => void
+    handleChangeExchange: (e:ChangeEvent<{ value: string }>) => void
+    handleChangeSymbol: (e:ChangeEvent<{ value: string }>) => void
 }
 
 export const Subscribe: FC<IProps> = ({selectData, selectSymbols,  handleSubmit, handleChangeExchange, handleChangeSymbol}) => {

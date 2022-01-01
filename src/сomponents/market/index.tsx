@@ -1,22 +1,22 @@
-import React, {useEffect, useState} from 'react';
+import React, {ChangeEvent, useEffect, useState} from 'react';
 import { MarketData, ChartingData, Subscribe } from '../index';
 import {IExchange, IHistory, IMarketData, ISymbol} from '../../Types';
-import {getExchangeRate, getDataHistory, getExchanges, getSymbols} from "../../utils/api";
+import {getExchangeRate, getDataHistory, getExchanges, getSymbols} from '../../utils/api';
 import './style.scss'
 
 
 export const Market = () => {
     const [selectExchange, setSelectExchange] = useState<IExchange[]>([]);
     const [selectSymbols, setSelectSymbols] = useState<ISymbol[]>([]);
-    const [data, setData] = useState<IMarketData>({} as IMarketData)
-    const [symbolId, setSymbolId] = useState<string>('')
-    const [history, setHistory] = useState<IHistory[]>([])
+    const [data, setData] = useState<IMarketData>({} as IMarketData);
+    const [symbolId, setSymbolId] = useState<string>('');
+    const [history, setHistory] = useState<IHistory[]>([]);
 
-    const handleChangeExchange = async (e:React.ChangeEvent<HTMLInputElement>) => {
+    const handleChangeExchange = async (e:ChangeEvent<{ value: string }>) => {
         const getExchangeId = e.target.value
         getSymbols(getExchangeId, (data) => setSelectSymbols(data))
     };
-    const handleChangeSymbol = async (e: React.ChangeEvent<HTMLInputElement>) => {
+    const handleChangeSymbol = async (e: ChangeEvent<{ value: string }>) => {
         const getSymbolId = e.target.value;
         setSymbolId(getSymbolId)
         getDataHistory(getSymbolId, (data) => setHistory(data))

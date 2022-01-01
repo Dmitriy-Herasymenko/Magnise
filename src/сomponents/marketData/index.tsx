@@ -1,6 +1,6 @@
-import {FC} from "react";
-import {IMarketData} from "../../Types";
-import "./style.scss"
+import {FC} from 'react';
+import {IMarketData} from '../../Types';
+import './style.scss'
 
 interface IProps {
     data: IMarketData;

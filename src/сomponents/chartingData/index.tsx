@@ -1,6 +1,6 @@
 import {LineChart, Line, CartesianGrid, XAxis, YAxis, Tooltip, Legend} from 'recharts';
-import {IHistory} from "../../Types/";
-import {FC} from "react";
+import {IHistory} from '../../Types/';
+import {FC} from 'react';
 import './style.scss';
 
 interface IPops {
