@@ -6,8 +6,8 @@ interface IProps {
     selectData: IExchange[];
     selectSymbols: ISymbol[];
     handleSubmit: () => void;
-    handleChangeExchange: (e: React.SyntheticEvent) => void
-    handleChangeSymbol: (e: React.SyntheticEvent) => void
+    handleChangeExchange: (e:any) => void
+    handleChangeSymbol: (e:any) => void
 }
 
 export const Subscribe: FC<IProps> = ({selectData, selectSymbols,  handleSubmit, handleChangeExchange, handleChangeSymbol}) => {
