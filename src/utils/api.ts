@@ -1,6 +1,6 @@
 import {config} from "./config";
 import axios, {AxiosError} from "axios";
-import {IExchange, IHistory, IMarketData, ISymbol} from "../Types";
+import {IExchange, IHistory, IMarketData, ISymbol} from "../types";
 
 const settings = {headers: {
         'X-CoinAPI-Key': config.api

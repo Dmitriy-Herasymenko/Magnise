@@ -1,5 +1,5 @@
 import {FC} from 'react';
-import {IMarketData} from '../../Types';
+import {IMarketData} from '../../types';
 import './style.scss'
 
 interface IProps {

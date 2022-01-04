@@ -1,5 +1,5 @@
 import React, {ChangeEvent, FC} from 'react';
-import {IExchange, ISymbol} from '../../Types/';
+import {IExchange, ISymbol} from '../../types/';
 import './style.scss';
 
 interface IProps {

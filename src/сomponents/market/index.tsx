@@ -1,6 +1,6 @@
 import React, {ChangeEvent, useEffect, useState} from 'react';
 import { MarketData, ChartingData, Subscribe } from '../index';
-import {IExchange, IHistory, IMarketData, ISymbol} from '../../Types';
+import {IExchange, IHistory, IMarketData, ISymbol} from '../../types';
 import {getExchangeRate, getDataHistory, getExchanges, getSymbols} from '../../utils/api';
 import './style.scss'
 

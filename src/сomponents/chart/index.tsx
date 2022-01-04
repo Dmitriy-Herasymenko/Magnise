@@ -1,5 +1,5 @@
 import {LineChart, Line, CartesianGrid, XAxis, YAxis, Tooltip, Legend} from 'recharts';
-import {IHistory} from '../../Types/';
+import {IHistory} from '../../types/';
 import {FC} from 'react';
 import './style.scss';
 

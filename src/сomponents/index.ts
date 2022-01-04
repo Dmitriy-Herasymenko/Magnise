@@ -1,4 +1,4 @@
 export {Market} from './market';
-export {ChartingData} from './chartingData';
+export {ChartingData} from './chart';
 export {MarketData} from './marketData';
-export {Subscribe} from './subscribe';
+export {Subscribe} from './subscriber';
