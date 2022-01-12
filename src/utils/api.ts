@@ -42,6 +42,7 @@ export const getExchangeRate = (symbolId:string, setData:(data:IMarketData)=> vo
         subscribe_data_type: ["trade"],
         subscribe_filter_symbol_id: [symbolId]
     };
+
     ws.onopen = () => ws.send(JSON.stringify(apiCall));
     ws.onmessage = function (e) {
         try {

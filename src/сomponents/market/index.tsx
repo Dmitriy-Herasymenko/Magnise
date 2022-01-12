@@ -21,7 +21,11 @@ export const Market = () => {
         setSymbolId(getSymbolId)
         getDataHistory(getSymbolId, (data) => setHistory(data))
     };
-    const handleSubmit = async () => getExchangeRate(symbolId, (data) => setData(data));
+    const handleSubmit = async () => {
+        let checkSymbol = symbolId;
+        if(checkSymbol === '' && selectSymbols.length) checkSymbol = selectSymbols[0].symbol_id;
+        getExchangeRate(checkSymbol, (data) => {setData(data)})
+    };
 
     useEffect(() => {
             getExchanges((data) => setSelectExchange(data))
