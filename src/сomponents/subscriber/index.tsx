@@ -32,13 +32,13 @@ export const Subscribe: FC<IProps> = ({
                 ))}
             </select>
             {selectSymbols.length !== 0 && (
-                <select name='select' className='select select-symbol' onChange={handleChangeSymbol}>{
-                    selectSymbols && selectSymbols.map(item => <option
+                <select name='select' className='select select-symbol' onChange={handleChangeSymbol}>
+                    <option>Choose symbol</option>
+                    {selectSymbols && selectSymbols.map(item => <option
                         key={item.symbol_id}
                         value={item.symbol_id}>
                         {item.symbol_id}
-                    </option>)
-                }
+                    </option>)}
                 </select>
             )}
             <button className='market_btn-subscribe' onClick={handleSubmit}>Subscribe</button>
