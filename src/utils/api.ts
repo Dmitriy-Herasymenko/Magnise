@@ -16,6 +16,7 @@ export const getExchanges = async (setSelectExchange:(data:IExchange[]) => void)
     }
 };
 export const getSymbols = async (exchangeId:string, setSelectSymbols:(data:ISymbol[]) => void) => {
+    console.log('getSymbols', exchangeId)
     try {
         const {data} = await axios.get<ISymbol[]>(`https://rest.coinapi.io/v1/symbols/${exchangeId}`, settings)
         setSelectSymbols(data)
@@ -34,6 +35,7 @@ export const getDataHistory = async (symbolId:string, setHistory:(data:IHistory[
     }
 };
 export const getExchangeRate = (symbolId:string, setData:(data:IMarketData)=> void ) => {
+    console.log("symbolId", symbolId)
     const ws = new WebSocket("wss://ws-sandbox.coinapi.io/v1/");
     const apiCall = {
         type: "hello",
@@ -44,8 +46,11 @@ export const getExchangeRate = (symbolId:string, setData:(data:IMarketData)=> vo
     };
 
     ws.onopen = () => ws.send(JSON.stringify(apiCall));
+    console.log("data send")
     ws.onmessage = function (e) {
         try {
+            const data = JSON.parse(e.data)
+            console.log("data", data)
             setData(JSON.parse(e.data))
         } catch (err) {
             console.log(err);

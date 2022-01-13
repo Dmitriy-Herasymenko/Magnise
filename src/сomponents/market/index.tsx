@@ -16,7 +16,7 @@ export const Market = () => {
         const getExchangeId = e.target.value
         getSymbols(getExchangeId, (data) => setSelectSymbols(data))
     };
-    const handleChangeSymbol = async (e: ChangeEvent<{ value: string }>) => {
+    const handleChangeSymbol = async (e:ChangeEvent<{ value: string }>) => {
         const getSymbolId = e.target.value;
         setSymbolId(getSymbolId)
         getDataHistory(getSymbolId, (data) => setHistory(data))

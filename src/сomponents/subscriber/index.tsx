@@ -19,16 +19,17 @@ export const Subscribe: FC<IProps> = ({
                                       }) => {
     return (
         <div className='market_subscribe'>
-            <select name='select' className='select' onChange={handleChangeExchange}>{
-                selectData && selectData.map(item => (
+            <select name='select' className='select' onChange={handleChangeExchange}>
+                <option>Choose exchange</option>
+                {selectData && selectData.map(item => (
                     <option
                         key={item.exchange_id}
                         value={item.exchange_id}
-                       >
+                        defaultValue={selectData[0].exchange_id}
+                    >
                         {item.exchange_id}
                     </option>
-                ))
-            }
+                ))}
             </select>
             {selectSymbols.length !== 0 && (
                 <select name='select' className='select select-symbol' onChange={handleChangeSymbol}>{

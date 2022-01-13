@@ -8,7 +8,7 @@ interface IPops {
 }
 
 export  const ChartingData: FC<IPops> = ({history}) => {
-    const dataNew = history.map((item:any) => {
+    const dataNew = history.map((item) => {
         const date = new Date(item.time_close).toLocaleDateString()
         return {
             name: date,
