@@ -16,7 +16,6 @@ export const getExchanges = async (setSelectExchange:(data:IExchange[]) => void)
     }
 };
 export const getSymbols = async (exchangeId:string, setSelectSymbols:(data:ISymbol[]) => void) => {
-    console.log('getSymbols', exchangeId)
     try {
         const {data} = await axios.get<ISymbol[]>(`https://rest.coinapi.io/v1/symbols/${exchangeId}`, settings)
         setSelectSymbols(data)
