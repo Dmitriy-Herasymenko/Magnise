@@ -7,7 +7,9 @@ interface IProps {
 }
 
 export const MarketData: FC<IProps> = ({data}) => {
-            if(Object.keys(data).length === 0) return <div className='market-data'><h3 className='subscribe'>No Subscribe</h3></div>
+            const isDataEmpty = Object.keys(data).length === 0;
+            if(isDataEmpty) return <div className='market-data'><h3 className='subscribe'>No Subscribe</h3></div>
+            if(data.type === 'error') return <div className='market-data'><h3 className='subscribe'>{data.message}</h3></div>
                 return (
                     <div className='market-data'>
                         <div>
